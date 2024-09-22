@@ -1,0 +1,6 @@
+%h1 HOME
+- if current_user.present?
+    %p こんにちは、#{current_user.name}さん
+- else
+    %p こんにちは、ゲストさん
+
