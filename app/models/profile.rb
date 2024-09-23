@@ -19,12 +19,4 @@ class Profile < ApplicationRecord
     enum gender: { male: 0, female: 1, other: 2 }
     belongs_to :user
 
-    def avatar_image
-        'default-avatar.png'
-        # if profile&.avatar&.attached?
-        #   profile.avatar
-        # else
-        #   'default-avatar.png'
-        # end
-    end
 end
