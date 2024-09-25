@@ -18,12 +18,45 @@ require("channels")
 
 import $ from 'jquery'
 import axios from 'axios'
+import { csrfToken } from 'rails-ujs'
 
-document.addEventListener('DOMContentLoaded', () => {
-    $('.article_title').on('click', () => {
-        axios.get('/')
+axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
+
+const handleAvaterForm = () => {
+    $('.image_file_upload').on('click', () => {
+        $('#fileInput').removeClass('hidden')
+        $('#fileInputButton').removeClass('hidden')
+    })
+}
+
+document.addEventListener('turbolinks:load', () => {
+
+    handleAvaterForm()
+
+    $('#fileInputButton').on('click', () => {
+        const fileInput = $('#fileInput')[0]
+        const avatar = fileInput.files[0]
+
+        if (!avatar) {
+            window.alert('画像を選択してください')
+        } else {
+            const formData = new FormData()
+            formData.append('profile[avatar]', avatar)
+
+            console.log([...formData])
+
+            axios.patch(`/profile`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
             .then((response) => {
-                console.log(response)
-        })
+                console.log('Avatar updated successfully:', response.data)
+            })
+            .catch(error => {
+    
+                console.log('Error updating avatar:', error)
+            })
+        }
     })
 })
