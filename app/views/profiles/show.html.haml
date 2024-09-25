@@ -2,7 +2,7 @@ Profile Show
 .container.profilePage
   .profilePage_user
     .profilePage_user_image.image_file_upload
-      = image_tag @user.avatar_image
+      = image_tag @user.avatar_image, id: 'avatar_image'
       - if @user == current_user
         %form
           %input#fileInput.hidden{type: 'file', accept: 'image/*'}
