@@ -6,12 +6,18 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^5.4.4",
+    "axios": "^0.19.2",
+    "jquery": "^3.7.1",
+    "rails-ujs": "^5.2.8-1",
     "sass": "^1.79.3",
     "turbolinks": "^5.2.0",
     "webpack": "^5",
     "webpack-cli": "^5"
   },
   "version": "0.1.0",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
