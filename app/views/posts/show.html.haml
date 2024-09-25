@@ -4,3 +4,11 @@ Post Show
   .post_content
     %h2= 'Content'
     %p= @post.content
+    %div
+      - if user_signed_in? && current_user.has_written?(@post)
+        .post_detail_actions
+          .dropdown
+            = image_tag 'actions.svg', class: 'dropbtn'
+            .dropdown-content.mini
+              = link_to 'Edit', edit_post_path(@post)
+              = link_to 'Delete', post_path(@post), data: { method: 'delete', confirm: 'Do you really want to delete this?' }

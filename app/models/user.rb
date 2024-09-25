@@ -28,6 +28,10 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
 
+  def has_written?(post)
+    posts.exists?(id: post.id)
+  end
+
   def avatar_image
     if profile&.avatar&.attached?
       profile.avatar
