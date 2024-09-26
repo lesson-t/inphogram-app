@@ -6,7 +6,7 @@ Post Show
   %p= ' ・ '
   %p= @post.display_created_at
 
-.post
+.post#post-show{data: {post_id: @post.id}}
   - if @post.photos.attached?
     .post_image
       - @post.photos.each do |photo|
@@ -14,11 +14,11 @@ Post Show
   .post_content
     - if user_signed_in?
       - if current_user.has_liked?(@post)
-        .post_heart
+        .post_heart.hidden.active-heart
           = link_to post_like_path(@post), data: { method: 'delete'} do
             = image_tag 'heart-active.svg'
       - else
-        .post_heart
+        .post_heart.hidden.inactive-heart
           = link_to post_like_path(@post), data: { method: 'post'} do
             = image_tag 'heart.svg'
     

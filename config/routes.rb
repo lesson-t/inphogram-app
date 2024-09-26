@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :posts do
   
 
-    resource :like, only: [:create, :destroy]
+    resource :like, only: [:show, :create, :destroy]
   end
 
   resource :timeline, only: [:show]
