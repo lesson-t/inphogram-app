@@ -8,4 +8,8 @@ Post New
       = f.label :content, 'description'
     %div
       = f.text_area :content
+    %div
+      = f.label :photos, 'photos'
+    %div
+      = f.file_field :photos, multiple: true
     = f.submit 'post', class: 'btn'

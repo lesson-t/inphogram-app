@@ -1,6 +1,18 @@
 Post Show
+.post_detail
+  - if @post.photos.attached?
+    = image_tag @post.user.avatar_image
+  %p= @post.user.name
+  %p= ' ・ '
+  %p= @post.display_created_at
 
 .post
+  - if @post.photos.attached?
+    .post_image
+      - @post.photos.each do |photo|
+        = image_tag photo, width:200
+  .post_content
+    = image_tag 'share.png'
   .post_content
     %h2= 'Content'
     %p= @post.content
