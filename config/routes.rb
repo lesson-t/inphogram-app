@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  resource :timeline, only: [:show]
+
   resource :profile, only: [:show, :edit, :update]
 end
