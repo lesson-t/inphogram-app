@@ -12,6 +12,16 @@ Post Show
       - @post.photos.each do |photo|
         = image_tag photo, width:200
   .post_content
+    - if user_signed_in?
+      - if current_user.has_liked?(@post)
+        .post_heart
+          = link_to post_like_path(@post), data: { method: 'delete'} do
+            = image_tag 'heart-active.svg'
+      - else
+        .post_heart
+          = link_to post_like_path(@post), data: { method: 'post'} do
+            = image_tag 'heart.svg'
+    
     = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(@post.content)}&url=#{ERB::Util.url_encode(post_url(@post))}", target: "_blank", rel: "noopener noreferrer" do
       = image_tag 'share.png', alt: 'Xでシェア'
   .post_content

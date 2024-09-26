@@ -13,8 +13,10 @@
 #  index_posts_on_user_id  (user_id)
 #
 class Post < ApplicationRecord
-    belongs_to :user
     has_many_attached :photos
+
+    has_many :likes, dependent: :destroy
+    belongs_to :user
 
     def display_created_at
         I18n.l(self.created_at, format: :default)
