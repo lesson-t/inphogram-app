@@ -6,12 +6,18 @@ Post Show
   %p= ' ・ '
   %p= @post.display_created_at
 
-.post
+.post#post-show{data: {post_id: @post.id}}
   - if @post.photos.attached?
     .post_image
       - @post.photos.each do |photo|
         = image_tag photo, width:200
   .post_content
+    - if user_signed_in?
+      .post_heart.hidden.active-heart
+        = image_tag 'heart-active.svg'
+      .post_heart.hidden.inactive-heart
+        = image_tag 'heart.svg'
+    
     = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(@post.content)}&url=#{ERB::Util.url_encode(post_url(@post))}", target: "_blank", rel: "noopener noreferrer" do
       = image_tag 'share.png', alt: 'Xでシェア'
   .post_content
@@ -25,3 +31,5 @@ Post Show
             .dropdown-content.mini
               = link_to 'Edit', edit_post_path(@post)
               = link_to 'Delete', post_path(@post), data: { method: 'delete', confirm: 'Do you really want to delete this?' }
+
+= javascript_pack_tag 'post'
