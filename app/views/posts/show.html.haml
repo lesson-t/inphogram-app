@@ -1,0 +1,27 @@
+Post Show
+.post_detail
+  - if @post.photos.attached?
+    = image_tag @post.user.avatar_image
+  %p= @post.user.name
+  %p= ' ・ '
+  %p= @post.display_created_at
+
+.post
+  - if @post.photos.attached?
+    .post_image
+      - @post.photos.each do |photo|
+        = image_tag photo, width:200
+  .post_content
+    = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(@post.content)}&url=#{ERB::Util.url_encode(post_url(@post))}", target: "_blank", rel: "noopener noreferrer" do
+      = image_tag 'share.png', alt: 'Xでシェア'
+  .post_content
+    %h2= 'Content'
+    %p= @post.content
+    %div
+      - if user_signed_in? && current_user.has_written?(@post)
+        .post_detail_actions
+          .dropdown
+            = image_tag 'actions.svg', class: 'dropbtn'
+            .dropdown-content.mini
+              = link_to 'Edit', edit_post_path(@post)
+              = link_to 'Delete', post_path(@post), data: { method: 'delete', confirm: 'Do you really want to delete this?' }
