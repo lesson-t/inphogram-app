@@ -17,6 +17,9 @@ Post Show
         = image_tag 'heart-active.svg'
       .post_heart.hidden.inactive-heart
         = image_tag 'heart.svg'
+
+    = link_to post_comments_path(@post) do
+      = image_tag 'comment.png', alt: 'コメントする'
     
     = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(@post.content)}&url=#{ERB::Util.url_encode(post_url(@post))}", target: "_blank", rel: "noopener noreferrer" do
       = image_tag 'share.png', alt: 'Xでシェア'

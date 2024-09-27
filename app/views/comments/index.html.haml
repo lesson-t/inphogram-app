@@ -1,0 +1,20 @@
+Comments Index
+
+.container#comment-index{data: {post_id: @post.id}}
+  - @comments.each do |comment|
+    .comment_detail
+      = image_tag comment.post.user.avatar_image
+    %p= comment.post.user.name  
+    %p= comment.content
+
+-# .comments-container.post_comment
+
+.container
+  .btn-secondary.show-comment-form
+    add Comment
+  .comment-text-area.hidden
+    = text_area_tag :comment_content, '', class: 'sm'
+    .btn-secondary.add-comment-btn
+      add Comment
+
+= javascript_pack_tag 'comment'
