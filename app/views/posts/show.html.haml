@@ -1,7 +1,8 @@
 Post Show
 .post_detail
-  - if @post.photos.attached?
-    = image_tag @post.user.avatar_image
+  = link_to account_path(@post.user) do
+    - if @post.photos.attached?
+      = image_tag @post.user.avatar_image
   %p= @post.user.name
   %p= ' ・ '
   %p= @post.display_created_at
