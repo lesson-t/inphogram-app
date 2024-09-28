@@ -47,6 +47,11 @@ class User < ApplicationRecord
     following_relationships.create!(following_id: user.id)
   end
 
+  def unfollow!(user)
+    relation = following_relationships.find_by!(following_id: user.id)
+    relation.destroy!
+  end
+
   def avatar_image
     if profile&.avatar&.attached?
       profile.avatar
