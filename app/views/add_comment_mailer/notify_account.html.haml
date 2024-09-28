@@ -1,0 +1,6 @@
+%p #{@user.name} さん
+%p #{@user.name}さんに対するコメントがありました。
+
+%p Comment: #{@comment.content}
+
+= link_to '投稿からコメントを確認する', post_url(@comment.post)
