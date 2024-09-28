@@ -15,4 +15,17 @@
 class Comment < ApplicationRecord
     belongs_to :post
     validates :content, presence: true
+
+    after_create :accountname_extraction_and_send_mail
+
+    private
+    def accountname_extraction_and_send_mail
+        accountnames = content.scan(/@(\w+)(?=\s|$|[^\w])/)
+        accountnames.each do |accountname|
+            user = User.find_by(name: accountname)
+            if user
+                AddCommentMailer.notify_account(user, self).deliver_later
+            end
+        end
+    end
 end
