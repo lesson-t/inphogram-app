@@ -1,0 +1,19 @@
+.container.profilePage
+  .profilePage_user
+    .profilePage_user_image.image_file_upload
+      = image_tag user.avatar_image, id: 'avatar_image'
+      - if user == current_user
+        %form
+          %input#fileInput.hidden{type: 'file', accept: 'image/*'}
+          %button#fileInputButton.hidden{type: 'submit'}Submit
+    .profilePage_user_basicInfo
+      .profilePage_user_name
+        .profilePage_user_displayName
+          #{user.name}
+    .profilePage_user_actionButton
+      - if user == current_user
+        = link_to 'Edit', edit_profile_path
+      - else
+        = link_to 'Follow', '#'
+    .profilePage_user_introduction
+      = user.profile&.introduction
