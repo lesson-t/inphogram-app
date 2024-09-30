@@ -18,9 +18,15 @@ Rails.application.routes.draw do
   resources :accounts, only: [:show] do
     resources :follows, only: [:show, :create]
     resources :unfollows, only: [:create]
+    
+    member do
+      get :followings
+      get :followers
+    end
   end
 
   resource :timeline, only: [:show]
 
   resource :profile, only: [:show, :edit, :update]
 end
+

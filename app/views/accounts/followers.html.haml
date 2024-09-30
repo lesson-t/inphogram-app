@@ -1,0 +1,8 @@
+Followers フォロワー
+
+%h2= "#{@user.name} がフォローされているユーザー一覧"
+%ul
+  - @followers.each do |follower|
+    = link_to account_path(follower) do
+      = image_tag follower.avatar_image
+      = follower.name
