@@ -1,0 +1,5 @@
+Account Show
+%div#account-show{data: {account_id: @user.id, followed_id: current_user.id} }
+= render 'commons/profile', user: @user
+
+= javascript_pack_tag 'account'
