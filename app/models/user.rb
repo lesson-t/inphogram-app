@@ -39,6 +39,10 @@ class User < ApplicationRecord
     posts.exists?(id: post.id)
   end
 
+  def posts_count
+    posts.count
+  end
+
   def has_liked?(post)
     likes.exists?(post_id: post.id)
   end
@@ -56,6 +60,14 @@ class User < ApplicationRecord
 
   def has_followed?(user)
     following_relationships.exists?(following_id: user.id)
+  end
+
+  def followings_count
+    followings.count
+  end
+
+  def followers_count
+    followers.count
   end
 
   def avatar_image

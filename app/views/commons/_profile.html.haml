@@ -14,9 +14,13 @@
       - if user == current_user
         = link_to 'Edit', edit_profile_path
       - else
-        - if current_user&.has_followed?(user)
-          = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'}
-        - else
-          = link_to 'Follow', account_follows_path(user), data: {method: 'post'}
+        .hidden.active-follow
+          Unfollow
+        .hidden.active-unfollow
+          Follow
+    .profilepage_user_info
+      %p Post: #{user.posts_count}
+      %p Followers: #{user.followers_count}
+      %p Following: #{user.followings_count}
     .profilePage_user_introduction
       = user.profile&.introduction
