@@ -9,6 +9,24 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
-    %p.notice= notice
-    %p.alert= alert
+    %header.header
+      .header_logos
+        - if !current_page?(root_path)
+          = link_to :back do
+            = image_tag 'back.svg', class: 'header_back'
+        %p.header_pageTitle
+          = link_to 'Inphogram', root_path
+      %p.header_pageTitle 新着記事
+      - if user_signed_in?
+        .dropdown
+          = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
+          .dropdown-content
+            = link_to 'プロフィール', profile_path
+            = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+      - else
+        = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
     = yield
