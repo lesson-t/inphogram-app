@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :accounts, only: [:show] do
     resources :follows, only: [:show, :create]
     resources :unfollows, only: [:create]
-    
+
     member do
       get :followings
       get :followers
