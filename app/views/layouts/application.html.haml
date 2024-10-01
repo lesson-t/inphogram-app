@@ -8,6 +8,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
   %body
     %header.header
       .header_logos
@@ -16,7 +17,7 @@
             = image_tag 'back.svg', class: 'header_back'
         %p.header_pageTitle
           = link_to 'Inphogram', root_path
-      %p.header_pageTitle 新着記事
+      %p.header_pageTitle
       - if user_signed_in?
         .dropdown
           = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
