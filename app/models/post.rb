@@ -19,6 +19,10 @@ class Post < ApplicationRecord
     has_many :likes, dependent: :destroy
     belongs_to :user
 
+    def likes_count
+        likes.count
+    end
+
     def display_created_at
         I18n.l(self.created_at, format: :default)
     end
