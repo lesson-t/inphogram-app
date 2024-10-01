@@ -1,1 +1,19 @@
 Timeline Show
+
+- if @posts.any?
+  - @posts.each do |post|
+    .post_detail
+      = link_to account_path(post.user) do
+        - if post.photos.attached?
+          = image_tag post.user.avatar_image
+    %p= "#{post.user.name}・#{post.display_created_at}"
+    .post
+      - if post.photos.attached?
+        .post_image
+          - post.photos.each do |photo|
+            = image_tag photo, width:200
+        %p= post.content
+        %p いいね数:
+        %p= post.likes_count
+- else
+  %p 該当する投稿はありません
