@@ -15,6 +15,8 @@
 class Post < ApplicationRecord
     has_many_attached :photos
 
+    validates :photos, presence: true
+
     validates :content, presence: true
     validates :content, length: { minimum: 1}
 
