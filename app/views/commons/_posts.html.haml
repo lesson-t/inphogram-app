@@ -6,13 +6,14 @@
         - if post.photos.attached?
           = image_tag post.user.avatar_image
       %p= "#{post.user.name}・#{post.display_created_at}"
-    .post
-      - if post.photos.attached?
-        .post_image
-          - post.photos.each do |photo|
-            = image_tag photo, width:200
-      .post_content
-        %p= post.content
+    = link_to post_path(post) do
+      .post
+        - if post.photos.attached?
+          .post_image
+            - post.photos.each do |photo|
+              = image_tag photo, width:200
+        .post_content
+          %p= post.content
   
   = link_to new_post_path do
     .float_btn

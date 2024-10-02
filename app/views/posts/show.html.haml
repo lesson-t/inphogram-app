@@ -25,7 +25,7 @@ Post Show
     = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(@post.content)}&url=#{ERB::Util.url_encode(post_url(@post))}", target: "_blank", rel: "noopener noreferrer" do
       = image_tag 'share.png', alt: 'Xでシェア'
   .post_content
-    %h2= 'Content'
+    %h2= I18n.t('posts.content')
     %p= @post.content
     %div
       - if user_signed_in? && current_user.has_written?(@post)
