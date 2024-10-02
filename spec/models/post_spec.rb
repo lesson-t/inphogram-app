@@ -1,21 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let!(:user) do
-    User.create!({
-      email: 'tester@example.com', 
-      password: 'password', 
-      name: 'tester'
-    })
-  end
+  let!(:user) { create(:user) }
 
   context 'コンテンツと画像ファイルが入力されている場合' do
-    let!(:post) do
-      user.posts.build({
-        content: Faker::Lorem.characters(number: 10),
-        photos: [fixture_file_upload(Rails.root.join('spec', 'fixtures', 'files', 'test1.png'), 'image/png')]
-      })
-    end
+    let!(:post) { build(:post, user: user) }
 
     it '記事を保存できる' do
       expect(post.photos).to be_attached
@@ -24,11 +13,10 @@ RSpec.describe Post, type: :model do
   end
 
   context 'コンテンツが0文字の場合' do
-    let!(:post) do
-      user.posts.build({
-        content: '',
-        photos: [fixture_file_upload(Rails.root.join('spec', 'fixtures', 'files', 'test1.png'), 'image/png')]
-      })
+    let!(:post) { build(:post, content: '', user: user) }
+
+    before do
+      post.save
     end
     
     it '記事を保存できない' do
