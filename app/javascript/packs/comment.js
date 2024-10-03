@@ -21,7 +21,7 @@ document.addEventListener('turbolinks:load', () => {
     const dataset = $('#comment-index').data()
     const postId = dataset.postId
 
-    // axios.get(`/posts/${postId}/comments/new`)
+    // axios.get(`/api/posts/${postId}/comments/new`)
     // .then((response) => {
     //     const comments = response.data
     //     comments.forEach((comment) => {
@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
         if (!content) {
             window.alert('コメントを入力してください')
         } else {
-            axios.post(`/posts/${postId}/comments`, {
+            axios.post(`/api/posts/${postId}/comments`, {
                 comment: {content: content}
             })
                 .then((res) => {
