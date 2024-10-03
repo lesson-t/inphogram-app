@@ -1,6 +1,4 @@
-class TimelinesController < ApplicationController
-    before_action :authenticate_user!
-
+class Apps::TimelinesController < ApplicationController
     def show
         @posts = Post.joins(:user)
                      .left_joins(:likes)

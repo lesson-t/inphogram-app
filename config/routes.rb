@@ -21,9 +21,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :timeline, only: [:show]
-
-  resource :profile, only: [:show, :edit, :update]
+  scope module: :apps do
+    resource :timeline, only: [:show]
+    resource :profile, only: [:show, :edit, :update]
+  end
 
   namespace :api do
     scope '/posts/:post_id' do
