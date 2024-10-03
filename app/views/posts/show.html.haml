@@ -19,7 +19,7 @@ Post Show
       .post_heart.hidden.inactive-heart
         = image_tag 'heart.svg'
 
-    = link_to post_comments_path(@post) do
+    = link_to api_comments_path(@post) do
       = image_tag 'comment.png', alt: 'コメントする'
     
     = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(@post.content)}&url=#{ERB::Util.url_encode(post_url(@post))}", target: "_blank", rel: "noopener noreferrer" do

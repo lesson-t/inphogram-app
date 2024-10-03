@@ -9,11 +9,7 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
 
-  resources :posts do
-    resources :comments, only: [:index, :new, :create]
-
-    resource :like, only: [:show, :create, :destroy]
-  end
+  resources :posts
 
   resources :accounts, only: [:show] do
     resources :follows, only: [:show, :create]
@@ -25,8 +21,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :timeline, only: [:show]
+  scope module: :apps do
+    resource :timeline, only: [:show]
+    resource :profile, only: [:show, :edit, :update]
+  end
 
-  resource :profile, only: [:show, :edit, :update]
+  namespace :api do
+    scope '/posts/:post_id' do
+      resources :comments, only: [:index, :new, :create]
+      resource :like, only: [:show, :create, :destroy]
+    end
+  end
 end
 
