@@ -26,7 +26,7 @@ Post Show
       = image_tag 'share.png', alt: 'Xでシェア'
   .post_content
     %h2= I18n.t('posts.content')
-    %p= @post.content
+    %p.post_content_in= @post.content
     %div
       - if user_signed_in? && current_user.has_written?(@post)
         .post_detail_actions
