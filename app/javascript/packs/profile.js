@@ -22,22 +22,36 @@ document.addEventListener('turbolinks:load', () => {
             const formData = new FormData()
             formData.append('profile[avatar]', avatar)
 
-            axios.patch(`/profile`, formData, {
+            axios.patch(`/profile/avatar_update`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    'Content-Type': 'multipart/form-data',
+                    'Turbolinks-Referrer': false
+                },
+                timeout: 30000
             })
             .then((response) => {
                 // 以下が実行されておらず、要対策が必要。
-                // 画像は更新されているが、非同期のためか一度手動で更新すると変更後の画像が表示される 
-                console.log('Avatar updated successfully:', response.data)
-                const newAvatarUrl = response.data.avatar_url
-                $('#avatar_image').attr('src', newAvatarUrl + '?' + new Date().getTime())
+                // 画像は更新されているが、非同期のためか一度手動で更新すると変更後の画像が表示される
+                console.log(response)
+                if (response.data.success) {
+                    const newAvatarUrl = response.data.avatar_url; // サーバー側で新しいアバターURLを返却する
+                    $('#avatar_image').attr('src', newAvatarUrl + '?' + new Date().getTime()); // キャッシュ防止のためにタイムスタンプを付加
+                    window.alert('アバターが更新されました');
+                    
+                }
+                // window.location.reload()
+                 
+                // console.log('Avatar updated successfully:', response.data)
+                // const newAvatarUrl = response.data.avatar_url
+                // $('#avatar_image').attr('src', newAvatarUrl + '?' + new Date().getTime())
 
             })
             .catch(error => {
-    
-                console.log('Error updating avatar:', error)
+                if (error.code === 'ECONNABORTED') {
+                    window.alert('リクエストがタイムアウトしました。ネットワーク接続を確認してください。')
+                } else {
+                    console.error('エラーが発生しました:', error.response ? error.response : error.message)
+                }
             })
         }
     })

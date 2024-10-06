@@ -1,4 +1,8 @@
 Sidekiq.configure_server do |config|
+    config.on(:startup) do
+        require 'active_storage/engine'
+    end
+    
     config.redis = { url: ENV.fetch('REDIS_URL', 'redis://localhost:6379') }
 end
   

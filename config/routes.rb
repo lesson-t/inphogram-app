@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   scope module: :apps do
     resource :timeline, only: [:show]
-    resource :profile, only: [:show, :edit, :update]
+    resource :profile, only: [:show, :edit, :update] do
+      patch :avatar_update, on: :member
+    end
   end
 
   namespace :api do
