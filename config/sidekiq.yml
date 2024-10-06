@@ -1,4 +1,6 @@
-:concurrency: 1
+:concurrency: 2
 :queues:
-  - default
-  - mailers
+  - [default, 7]
+  - [mailers, 5]
+  - [active_storage_analysis, 3]
+  - [active_storage_purge,1]
