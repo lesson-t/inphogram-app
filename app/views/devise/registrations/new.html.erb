@@ -5,22 +5,22 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :Account %><br />
+      <%= f.label :Account, class: 'custom-label' %>
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'signup_text'  %>
     </div>
 
     <div class="field">
-      <%= f.label :Email %><br />
+      <%= f.label :Email, class: 'custom-label' %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field">
-      <%= f.label :Password %>
+      <%= f.label :Password, class: 'custom-label' %>
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
     <div class="field">
-      <%= f.label :Password_confirmation %><br />
+      <%= f.label :Password_confirmation, class: 'custom-label' %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
