@@ -8,27 +8,31 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    -# %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{href: "https://fonts.googleapis.com", rel: "preconnect"}/
+    %link{crossorigin: "", href: "https://fonts.gstatic.com", rel: "preconnect"}/
+    %link{href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap", rel: "stylesheet"}/
   %body
-    %header.header
-      .header_logos
-        - if !current_page?(root_path)
-          = link_to :back do
-            = image_tag 'back.svg', class: 'header_back'
+    = yield
+    - unless devise_controller?
+      = render 'layouts/footer'
+      %header.header
+        .header_logos
+          - if !current_page?(root_path)
+            = link_to :back do
+              = image_tag 'back.svg', class: 'header_back'
+          %p.header_pageTitle
+            = link_to 'Inphogram', root_path
         %p.header_pageTitle
-          = link_to 'Inphogram', root_path
-      %p.header_pageTitle
-      - if user_signed_in?
-        .dropdown
-          = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
-          .dropdown-content
-            = link_to 'プロフィール', profile_path
-            = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
-      - else
-        = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
+        - if user_signed_in?
+          .dropdown
+            = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
+            .dropdown-content
+              = link_to 'プロフィール', profile_path
+              = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+        - else
+          = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
     - if flash.present?
       .flash
         - flash.each do |key, value|
           %div{:class => key}= value
-    = yield
-    = render 'layouts/footer'
