@@ -1,0 +1,31 @@
+.signup_img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+label {
+    display: block;
+}
+
+input[type="name"],
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    border: none;
+    border-bottom: 1px solid rgba(158, 158, 158, 1);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.actions-btn {
+    background-color: yellow;
+    border: none;
+    width: 100%;
+    padding: 16px 0;
+    text-align: center;
+    font-size: 12px;
+    margin: 10px;
+}
