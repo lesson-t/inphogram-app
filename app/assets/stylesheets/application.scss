@@ -20,6 +20,14 @@ html {
     box-sizing: border-box;
     height: 100%;
   }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;  // 水平方向のスクロールを防ぐ
+  }
   
   *,
   *:before,
@@ -44,6 +52,7 @@ html {
   .container {
     padding: 16px 16px;
     width: 100%;
+    box-sizing: border-box;
   }
   
   .float_btn {
