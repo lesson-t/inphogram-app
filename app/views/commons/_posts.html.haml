@@ -10,8 +10,13 @@
       .post
         - if post.photos.attached?
           .post_image
-            - post.photos.each do |photo|
-              = image_tag photo, width:200
+            - post.photos.each_with_index do |photo, index|
+              - if index == 0
+                = image_tag photo, class: 'image-large'
+              - elsif index == 1
+                = image_tag photo, class: 'image-small-top'
+              - elsif index == 2
+                = image_tag photo, class: 'image-small-bottom'
         .post_content
           %p= post.content
   
