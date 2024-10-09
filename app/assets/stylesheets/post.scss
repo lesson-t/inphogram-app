@@ -47,6 +47,7 @@ $container-padding: 16px;
     }
 
     &_detail {
+        display: flex;
         padding-top: 10px;
         display: flex;
         font-size: 12px;
@@ -64,13 +65,28 @@ $container-padding: 16px;
           right: 0px;
           position: absolute;
         }
+        
+        .info {
+          display: flex;
+          flex-direction: column; /* 名前と作成日を縦に配置 */
+          justify-content: space-between; /* 名前は上、作成日は下 */
+        }
+
+        .date {
+          color: rgba(158, 158, 158, 1);
+        }
+
     }
     
     &_content {
-        padding: 24px 0 32px;
+        margin-top: 12px;
 
         img {
-          width: 30px;
+          width: 16px;
+        }
+
+        p {
+          font-size: 12px; 
         }
     }
 
@@ -96,6 +112,15 @@ $container-padding: 16px;
             grid-row: 2 / 4;
           }
       }
+    }
+
+    &_photo {
+        cursor: pointer;
+        width: $avatar-size;
+        height: $avatar-size;
+        margin-right: 16px;
+        margin-top: 5px;
+        margin-left: 16px;
     }
 
 }
