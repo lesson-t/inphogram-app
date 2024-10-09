@@ -79,9 +79,14 @@ $container-padding: 16px;
     }
     
     &_content {
+        margin-top: 12px;
 
         img {
           width: 16px;
+        }
+
+        p {
+          font-size: 12px; 
         }
     }
 

@@ -18,20 +18,16 @@
                 = image_tag photo, class: 'image-small-top'
               - elsif index == 2
                 = image_tag photo, class: 'image-small-bottom'
-      .post_content
-        - if user_signed_in?
-          .post_heart.hidden.active-heart
-            = image_tag 'heart-active.svg'
-          .post_heart.hidden.inactive-heart
-            = image_tag 'heart.svg'
-          = link_to api_comments_path(post) do
-            = image_tag 'comment.png', alt: 'コメントする'  
-        = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(post.content)}&url=#{ERB::Util.url_encode(post_url(post))}", target: "_blank", rel: "noopener noreferrer" do
-          = image_tag 'share.png', alt: 'Xでシェア'
-        - if post.likes.any?
-          %p= "#{post.likes.first.user.name} and #{post.likes.count} other liked your post"
-        %p= "#{post.content}"
-  
-  = link_to new_post_path do
-    .float_btn
-      %i.fa.fa-plus
+        .post_content
+          - if user_signed_in?
+            .post_heart.hidden.active-heart
+              = image_tag 'heart-active.svg'
+            .post_heart.hidden.inactive-heart
+              = image_tag 'heart.svg'
+            = link_to api_comments_path(post) do
+              = image_tag 'comment.png', alt: 'コメントする'  
+          = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(post.content)}&url=#{ERB::Util.url_encode(post_url(post))}", target: "_blank", rel: "noopener noreferrer" do
+            = image_tag 'share.png', alt: 'Xでシェア'
+          - if post.likes.any?
+            %p= "#{post.likes.first.user.name} and #{post.likes.count} other liked your post"
+          %p= "#{post.user.name} #{post.content}"
