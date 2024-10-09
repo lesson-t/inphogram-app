@@ -8,11 +8,17 @@ $image_size: 56px;
   &_user {
     margin-bottom: 32px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 
     &_image {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      width: 84px;
+      height: 84px;
+      border-radius: 100%;
 
       img {
         width: $image_size;
@@ -52,6 +58,34 @@ $image_size: 56px;
 
     &_introduction {
       font-size: 12px;
+    }
+  }
+
+  .profilePage_user_image {
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center;     /* 垂直方向の中央揃え */
+    width: 84px;             /* 親要素の幅 */
+    height: 84px;            /* 親要素の高さ */
+    border-radius: 100%;     /* 完全に丸くするための設定 */
+    overflow: hidden;        /* 画像が親要素をはみ出さないようにする */
+    margin-top: 32px;
+  
+    img {
+      width: 100%;           /* 親要素の幅に合わせる */
+      height: 100%;          /* 親要素の高さに合わせる */
+      object-fit: cover;     /* 画像が切り取られずに収まるようにする */
+      border-radius: 100%;   /* 画像自体も丸くする */
+    }
+  }
+
+  .profilepage_user_info {
+    display: flex;               /* 横並びにする */
+    justify-content: space-around; /* 均等にスペースを配置 */
+    gap: 16px;                   /* 要素間のスペースを指定 */
+    
+    p {
+      margin: 0;                 /* pタグのデフォルトマージンをリセット */
     }
   }
 }

@@ -1,5 +1,8 @@
-Account Show
-%div#account-show{data: {account_id: @user.id, followed_id: current_user.id} }
+- if user_signed_in?
+  %div#account-show{data: {account_id: @user.id, followed_id: current_user.id} }
+- else
+  %div#account-show{data: {account_id: @user.id} }
+
 = render 'commons/profile', user: @user
 
 = javascript_pack_tag 'account'
