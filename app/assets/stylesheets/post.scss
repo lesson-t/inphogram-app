@@ -52,6 +52,7 @@ $container-padding: 16px;
         display: flex;
         font-size: 12px;
         position: relative;
+        align-items: center;
     
         img {
           cursor: pointer;
@@ -74,6 +75,11 @@ $container-padding: 16px;
 
         .date {
           color: rgba(158, 158, 158, 1);
+        }
+
+        &_new {
+          font-size: 16px;
+          color: rgba(51, 51, 51, 1);
         }
 
     }
@@ -123,4 +129,64 @@ $container-padding: 16px;
         margin-left: 16px;
     }
 
+}
+
+.post_new_header {
+  display: flex;
+  justify-content: space-between; /* 左、中央、右に要素を配置 */
+  align-items: center; /* 垂直方向に中央揃え */
+  margin-bottom: 40px;
+  
+  a {
+    margin-right: auto; /* 左側に固定 */
+    color: rgba(47, 128, 237, 1);
+  }
+  
+  p {
+    text-align: center; /* 中央のテキスト */
+    flex: 1; /* 中央にスペースを確保 */
+    color: rgba(51, 58, 66, 1);
+  }
+  
+  input[type="submit"] {
+    margin-left: auto;       /* 右側に固定 */
+    background: none;        /* 背景色をなくす */
+    border: none;            /* 枠線をなくす */
+    font-family: inherit;    /* アプリで使用しているフォントを適用 */
+    font-size: inherit;      /* フォントサイズを親要素に合わせる */
+    color: inherit;          /* 文字色を親要素に合わせる */
+    cursor: pointer;         /* ボタンらしさを出すためのポインター表示 */
+    color: rgba(189, 189, 189, 1);
+    padding: 0;              /* パディングを削除 */
+  
+  &:hover {
+    text-decoration: underline; /* ホバー時に下線を表示 */
+  }
+  }
+}
+
+.custom-textarea{
+  margin-top: 30px;
+  margin-bottom: 24px;
+
+  &::placeholder {
+    font-size: 18px;
+  }
+}
+
+.hidden-file-input {
+  display: none; /* file_fieldを非表示にする */
+}
+
+.custom-file-label {
+  font-size: 12px;
+  display: inline-block;
+  padding: 3px 9px;
+  border: 2px solid rgba(224, 224, 224, 1); /* 枠を付ける */
+  cursor: pointer;
+  text-align: center;
+}
+
+.custom-file-label:hover {
+  background-color: #e0e0e0; /* ホバー時の背景色 */
 }
