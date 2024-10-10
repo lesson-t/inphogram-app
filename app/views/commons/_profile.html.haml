@@ -20,17 +20,20 @@
         .hidden.active-unfollow
           Follow
     .profilepage_user_info
-      %p
-        = user.posts_count
-        %br/
-        Posts
-      %p
-        = user.followers_count
-        %br/
-        Followers 
-      %p
-        = user.followings_count
-        %br/
-        Following
-    .profilePage_user_introduction
-      = user.profile&.introduction
+      %p.profile_wrapper
+        %span.top_count= user.posts_count
+        %span.bottom_label Posts
+      %p.profile_wrapper
+        %span.top_count= user.followers_count
+        %span.bottom_label Followers 
+      %p.profile_wrapper
+        %span.top_count= user.followings_count
+        %span.bottom_label Following
+
+.container.recent_post
+  - if recent_posts.any?
+    .post-grid
+      - recent_posts.each do |post|
+        .post
+          = link_to post_path(post) do
+            = image_tag post.photos.first, class: 'post-image'

@@ -88,4 +88,50 @@ $image_size: 56px;
       margin: 0;                 /* pタグのデフォルトマージンをリセット */
     }
   }
+
+  .profile_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .top_count {
+    flex: 16;
+    color: rgba(51, 58, 66, 1);
+    margin-bottom: 0; /* 下の余白をなくす */
+    line-height: 1;     /* 行の高さを詰める */
+  }
+
+  .bottom_label {
+    font-size: 14px;
+    color: rgba(158, 158, 158, 1);
+    margin-top: 0;  /* 上の余白をなくす */
+    line-height: 1;     /* 行の高さを詰める */
+  }
+}
+
+.container.recent_post {
+  padding-top: 0;
+
+  .post-grid {
+    display: grid; /* Gridレイアウトを使用 */
+    grid-template-columns: repeat(3, 1fr); /* 3列に設定 */
+    gap: 8px; /* 各要素間の隙間 */
+  }
+
+  .post {
+    /* 画像が最大化されるようにフレックスボックスを設定 */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    
+    img {
+      width: 100%; /* 親要素の幅に合わせる */
+      height: auto; /* 高さは自動調整 */
+      max-width: 100%; /* 最大幅を親要素に制限 */
+      border-radius: 4px; /* 角を丸くするオプション */
+      object-fit: cover; /* 画像を切り抜く */
+    }
+  }
 }
