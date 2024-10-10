@@ -1,15 +1,21 @@
-Post New
 .container
-  %ul
-    - @post.errors.full_messages.each do |message|
-      %li= message
   = form_with(model: @post, local: true) do |f|
+    .post_new_header
+      = link_to 'Cancel', :back
+      %p Status
+      = f.submit 'Post'
+    
+    .post_detail
+      = image_tag current_user.avatar_image
+      %p.post_detail_new= "#{current_user.name}"
+
+    %ul
+      - @post.errors.full_messages.each do |message|
+        %li= message
+
     %div
-      = f.label :content, 'description'
+      = f.text_field :content, placeholder: "What's on your mind ?", class: "custom-textarea"
     %div
-      = f.text_area :content
-    %div
-      = f.label :photos, 'photos'
-    %div
-      = f.file_field :photos, multiple: true
-    = f.submit 'post', class: 'btn'
+      = f.file_field :photos, multiple: true, class: 'hidden-file-input', id: 'file_input'
+      %label.custom-file-label{for: 'file_input'} ＋ Album
+    
