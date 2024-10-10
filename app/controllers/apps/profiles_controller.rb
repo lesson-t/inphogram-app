@@ -2,6 +2,7 @@ class Apps::ProfilesController < ApplicationController
     def show
         @profile = current_user.profile
         @user = current_user
+        @recent_posts = @user.posts.order(created_at: :desc).limit(6)
     end
 
     def edit

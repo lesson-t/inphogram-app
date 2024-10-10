@@ -4,6 +4,7 @@ class AccountsController < ApplicationController
         if @user == current_user
             redirect_to profile_path
         end
+        @recent_posts = @user.posts.order(created_at: :desc).limit(6)
     end
 
     def followings

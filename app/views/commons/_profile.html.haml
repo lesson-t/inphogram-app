@@ -1,4 +1,9 @@
 .container.profilePage
+  .profileHeader
+    .header_logos
+      = link_to :back do
+        = image_tag 'back2.png', class: 'header_back'
+      %p.header_accountName #{user.name}
   .profilePage_user
     .profilePage_user_image.image_file_upload
       = image_tag user.avatar_image, id: 'avatar_image'
@@ -6,10 +11,6 @@
         %form
           %input#fileInput.hidden{type: 'file', accept: 'image/*'}
           %button#fileInputButton.hidden{type: 'submit'}Submit
-    .profilePage_user_basicInfo
-      .profilePage_user_name
-        .profilePage_user_displayName
-          #{user.name}
     .profilePage_user_actionButton
       - if user == current_user
         = link_to 'Edit', edit_profile_path
@@ -19,8 +20,20 @@
         .hidden.active-unfollow
           Follow
     .profilepage_user_info
-      %p Post: #{user.posts_count}
-      %p Followers: #{user.followers_count}
-      %p Following: #{user.followings_count}
-    .profilePage_user_introduction
-      = user.profile&.introduction
+      %p.profile_wrapper
+        %span.top_count= user.posts_count
+        %span.bottom_label Posts
+      %p.profile_wrapper
+        %span.top_count= user.followers_count
+        %span.bottom_label Followers 
+      %p.profile_wrapper
+        %span.top_count= user.followings_count
+        %span.bottom_label Following
+
+.container.recent_post
+  - if recent_posts.any?
+    .post-grid
+      - recent_posts.each do |post|
+        .post
+          = link_to post_path(post) do
+            = image_tag post.photos.first, class: 'post-image'
