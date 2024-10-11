@@ -190,3 +190,61 @@ $container-padding: 16px;
 .custom-file-label:hover {
   background-color: #e0e0e0; /* ホバー時の背景色 */
 }
+
+.post_content_menu {
+  margin-top: 12px;
+  display: flex; /* 子要素を横並びにする */
+  align-items: center; /* 垂直方向に中央揃え */
+  gap: 10px; /* 要素間のスペースを追加 */
+
+  .post_heart {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 24px; /* アイコンのサイズを調整 */
+      height: auto;
+    }
+  }
+
+  a {
+    display: inline-block;
+    img {
+      width: 24px; /* コメントやシェアのアイコンのサイズを調整 */
+      height: auto;
+    }
+  }
+
+  .post_detail_actions {
+    position: relative;
+    .dropdown {
+      display: inline-block;
+      img.dropbtn {
+        width: 24px; /* アクションアイコンのサイズを調整 */
+      }
+      .dropdown-content.mini {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: white;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+
+        a {
+          color: black;
+          padding: 8px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        a:hover {
+          background-color: #ddd;
+        }
+      }
+
+      &:hover .dropdown-content.mini {
+        display: block;
+      }
+    }
+  }
+}
