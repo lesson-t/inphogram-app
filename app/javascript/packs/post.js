@@ -4,8 +4,10 @@ import axios from 'modules/axios'
 const handleHeartDisplay = (hasLiked) => {
     if (hasLiked) {
         $('.active-heart').removeClass('hidden')
+        $('.inactive-heart').addClass('hidden')
     } else {
         $('.inactive-heart').removeClass('hidden')
+        $('.active-heart').addClass('hidden')
     }
 }
 
