@@ -1,10 +1,77 @@
 $avatar-size: 32px;
 
+
+.commentHeader {
+    display: flex;
+    justify-content: center; /* 中央寄せに変更 */
+    align-items: center; /* 縦方向に中央揃え */
+    margin-bottom: 20px;
+
+    .header_logos {
+        margin-right: auto; /* 左に固定 */
+    }
+
+    p.centered-text {
+        text-align: center;
+        margin: 0; /* デフォルトの余白を消す */
+        flex-grow: 1; /* 左右にスペースを確保して中央に寄せる */
+        padding: 0 16px; /* 左右のアイコンから少し距離を取る */
+    }
+}
+
 .comment_detail {
+    display: flex;
+    align-items: flex-start; /* avatar を左上に固定 */
+    padding: 10px;
+    padding-bottom: 32px;
 
     img {
         width: $avatar-size;
         height: $avatar-size;
+        border-radius: 50%; /* 画像を丸くする */
+        object-fit: cover;
     }
 
+    .text-area {
+        margin-left: 10px; /* avatar とテキストの間に余白を作る */
+        display: flex;
+        flex-direction: column;
+
+        .name {
+            padding-bottom: 5px; /* name と comment の間に余白を作る */
+        }
+
+        .comment {
+            font-size: 14px;
+            color: rgba(155, 155, 155, 1);
+        }
+    }
+}
+
+.comment-form {
+    display: flex;
+    align-items: center; /* 画像とテキストエリアを中央揃え */
+    border: 1px solid #ccc; /* 全体に枠を追加 */
+    padding: 8px; /* フォーム内に余白を追加 */
+    background-color: #fff; /* フォーム背景色を設定 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* 左右下方向の影を追加 */
+
+    .comment-icon {
+        width: 24px; /* 画像のサイズを調整 */
+        height: 24px;
+        cursor: pointer; /* クリックできるようにカーソルを変更 */
+        margin-right: 10px; /* テキストエリアとの余白を追加 */
+    }
+
+    .sm.auto-resize {
+        flex-grow: 1;
+        border: none;
+        outline: none;
+        resize: none; /* ユーザーによる手動リサイズを無効化 */
+        padding: 8px;
+        font-size: 1em;
+        min-height: 40px; /* 1行分の高さを確保 */
+        max-height: 200px; /* 高さの上限を設定（任意） */
+        overflow-y: auto; /* 必要に応じてスクロール */
+    }
 }
