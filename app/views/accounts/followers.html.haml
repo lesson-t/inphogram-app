@@ -1,8 +1,19 @@
-Followers フォロワー
+.container
+  .followHeader
+    .header_logos
+      = link_to :back do
+        = image_tag 'back2.png', class: 'header_back'
+    %p.centered-text= 'Followers'
 
-%h2= "#{@user.name} がフォローされているユーザー一覧"
-%ul
+.container
   - @followers.each do |follower|
-    = link_to account_path(follower) do
-      = image_tag follower.avatar_image
-      = follower.name
+    .follow_detail
+      = link_to account_path(follower) do
+        = image_tag follower.avatar_image
+      .text-area
+        %p.name= follower.name
+        %p.last-login
+          - if follower.last_sign_in_at.present?
+            = "Last seen #{time_ago_in_words(follower.last_sign_in_at)} ago"
+          - else
+            = "Last seen: Never signed in"
