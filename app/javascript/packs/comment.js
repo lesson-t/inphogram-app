@@ -1,12 +1,12 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
 
-const handleCommentForm = () => {
-    $('.show-comment-form').on('click', () => {
-        $('.show-comment-form').addClass('hidden')
-        $('.comment-text-area').removeClass('hidden')
-    })
-}
+// const handleCommentForm = () => {
+//     $('.show-comment-form').on('click', () => {
+//         $('.show-comment-form').addClass('hidden')
+//         $('.comment-text-area').removeClass('hidden')
+//     })
+// }
 
 // const appendNewComment = (comment) => {
 //     $('.comments-container').append(
@@ -29,9 +29,9 @@ document.addEventListener('turbolinks:load', () => {
     //     });
     // })
 
-    handleCommentForm()
+    // handleCommentForm()
 
-    $('.add-comment-btn').on('click', () => {
+    const postComment = () => {
         const content = $('#comment_content').val()
         if (!content) {
             window.alert('コメントを入力してください')
@@ -44,6 +44,9 @@ document.addEventListener('turbolinks:load', () => {
                     window.location.reload()
                 })
         }
-    })
+    }
+
+    // 画像をクリックしたときのイベント
+    $('.comment-icon').on('click', postComment)
 
 })
