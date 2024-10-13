@@ -10,6 +10,7 @@
 @import 'common';
 @import 'footer';
 @import 'signup';
+@import 'menu';
 
 html {
     word-spacing: 1px;
@@ -53,6 +54,16 @@ html, body {
     padding: 16px 16px;
     width: 100%;
     box-sizing: border-box;
+
+    @media (min-width: 1024px) {
+      margin-left: 300px; /* 左側に固定メニューがあるため、その分中央寄せ */
+      padding: 24px;
+    }
+    
+    @media (max-width: 1024px) {
+      margin: 0;
+      padding-bottom: 50px; /* 下部固定メニューを避ける余白 */
+    }
   }
   
   .float_btn {
@@ -74,4 +85,19 @@ html, body {
   
   .hidden {
     display: none !important;
+  }
+
+  .main-content {
+    margin-left: 100px;
+    max-width: 630px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      margin-left: 0;
+      padding: 10px;
+    }
   }
