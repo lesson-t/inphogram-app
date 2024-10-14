@@ -89,7 +89,7 @@ html, body {
 
   .main-content {
     margin-left: 100px;
-    max-width: 630px;
+
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -100,4 +100,9 @@ html, body {
       margin-left: 0;
       padding: 10px;
     }
+  }
+
+  .container-flex {
+    display: flex;
+    justify-content: center;
   }
