@@ -1,0 +1,63 @@
+/* PC用のメニュー */
+.pc-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100vh;
+    background-color: white;
+    border-right: 1px solid rgba(158, 158, 158, 1);
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        padding: 15px;
+        a {
+          color: black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  
+  /* モバイル用のメニュー */
+  .mobile-menu {
+    display: none; /* デフォルトでは非表示 */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000; /* 上に表示する */
+    ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      li {
+        a {
+          color: black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  
+  /* メディアクエリでPC・モバイルメニューの表示を切り替える */
+  @media (min-width: 768px) {
+    /* PC画面以上のサイズではPC用メニューを表示 */
+    .mobile-menu {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    /* スマートフォンではPC用メニューを非表示にし、モバイルメニューを表示 */
+    .pc-menu {
+      display: none;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
