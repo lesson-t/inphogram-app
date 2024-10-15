@@ -9,13 +9,13 @@ class AccountsController < ApplicationController
 
     def followings
         @user = User.find(params[:id])
-        @followings = @user.followings
+        @followings = @user.followings.distinct
         render 'followings'
     end
 
     def followers
         @user = User.find(params[:id])
-        @followers = @user.followers
+        @followers = @user.followers.distinct
         render 'followers'
     end
 end
