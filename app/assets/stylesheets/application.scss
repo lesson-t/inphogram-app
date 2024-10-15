@@ -52,18 +52,25 @@ html, body {
   }
   
   .container {
-    padding: 16px 16px;
+    padding: 16px;
     width: 100%;
     box-sizing: border-box;
+  }
 
-    @media (min-width: 1024px) {
-      margin-left: 300px; /* 左側に固定メニューがあるため、その分中央寄せ */
-      padding: 24px;
+  .container-form {
+    padding: 16px 16px;
+    width: 100%; /* 横幅を画面いっぱいに */
+    box-sizing: border-box;
+
+    @media (min-width: 768px) {
+      max-width: 768px; /* 1024px以上の画面サイズでは中央寄せ */
+      padding: 0 100px;
+      margin: 0 auto; /* 中央寄せ */
     }
     
-    @media (max-width: 1024px) {
-      margin: 0;
-      padding-bottom: 50px; /* 下部固定メニューを避ける余白 */
+    @media (max-width: 768px) { /* モバイルサイズの画面対応 */
+        padding: 16px; /* パディング調整 */
+        margin: 0; /* 左右の余白をなくす */
     }
   }
   
@@ -94,6 +101,15 @@ html, body {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+
+    @media (min-width: 768px) {
+      padding: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      margin: 0;
+      padding-bottom: 50px; /* 下部固定メニューを避ける余白 */
+    }
   }
 
   @media (max-width: 768px) {

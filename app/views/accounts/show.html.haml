@@ -3,6 +3,7 @@
 - else
   %div#account-show{data: {account_id: @user.id} }
 
-= render 'commons/profile', user: @user, recent_posts: @recent_posts
+.container-form
+  = render 'commons/profile', user: @user, recent_posts: @recent_posts
 
 = javascript_pack_tag 'account'

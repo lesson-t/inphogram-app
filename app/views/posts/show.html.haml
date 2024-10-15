@@ -1,41 +1,42 @@
-.container
-  .post_detail
-    = link_to account_path(@post.user) do
+.container-none
+  .container
+    .post_detail
+      = link_to account_path(@post.user) do
+        - if @post.photos.attached?
+          = image_tag @post.user.avatar_image
+      .info
+        %p= @post.user.name
+        %p.date= @post.display_created_at
+
+    .post#post-show{data: {post_id: @post.id}}
       - if @post.photos.attached?
-        = image_tag @post.user.avatar_image
-    .info
-      %p= @post.user.name
-      %p.date= @post.display_created_at
+        .post_image
+          - @post.photos.each do |photo|
+            = image_tag photo, width:200
+      .post_content_menu
+        - if user_signed_in?
+          .post_heart.hidden.active-heart
+            = image_tag 'heart-active.svg'
+          .post_heart.hidden.inactive-heart
+            = image_tag 'heart.svg'
 
-  .post#post-show{data: {post_id: @post.id}}
-    - if @post.photos.attached?
-      .post_image
-        - @post.photos.each do |photo|
-          = image_tag photo, width:200
-    .post_content_menu
-      - if user_signed_in?
-        .post_heart.hidden.active-heart
-          = image_tag 'heart-active.svg'
-        .post_heart.hidden.inactive-heart
-          = image_tag 'heart.svg'
-
-      = link_to api_comments_path(@post) do
-        = image_tag 'comment.png', alt: 'コメントする'
-      
-      = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(@post.content)}&url=#{ERB::Util.url_encode(post_url(@post))}", target: "_blank", rel: "noopener noreferrer" do
-        = image_tag 'share.png', alt: 'Xでシェア'
-      %div
-        - if user_signed_in? && current_user.has_written?(@post)
-          .post_detail_actions
-            .dropdown
-              = image_tag 'actions.svg', class: 'dropbtn'
-              .dropdown-content.mini
-                = link_to 'Edit', edit_post_path(@post)
-                = link_to 'Delete', post_path(@post), data: { method: 'delete', confirm: 'Do you really want to delete this?' }
-  .post_content
-    - if @post.likes.any?
-      %p= "#{@post.likes.first.user.name} and #{@post.likes.count} other liked your post"
-    %p.post_content_in= "#{@post.user.name} #{@post.content}"
+        = link_to api_comments_path(@post) do
+          = image_tag 'comment.png', alt: 'コメントする'
+        
+        = link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(@post.content)}&url=#{ERB::Util.url_encode(post_url(@post))}", target: "_blank", rel: "noopener noreferrer" do
+          = image_tag 'share.png', alt: 'Xでシェア'
+        %div
+          - if user_signed_in? && current_user.has_written?(@post)
+            .post_detail_actions
+              .dropdown
+                = image_tag 'actions.svg', class: 'dropbtn'
+                .dropdown-content.mini
+                  = link_to 'Edit', edit_post_path(@post)
+                  = link_to 'Delete', post_path(@post), data: { method: 'delete', confirm: 'Do you really want to delete this?' }
+    .post_content
+      - if @post.likes.any?
+        %p= "#{@post.likes.first.user.name} and #{@post.likes.count} other liked your post"
+      %p.post_content_in= "#{@post.user.name} #{@post.content}"
 
 
 = javascript_pack_tag 'post'

@@ -1,22 +1,23 @@
-.container
-  .commentHeader
-    .header_logos
-      = link_to :back do
-        = image_tag 'back2.png', class: 'header_back'
-    %p.centered-text= 'Comment'
+.container-form
+  .container
+    .commentHeader
+      .header_logos
+        = link_to :back do
+          = image_tag 'back2.png', class: 'header_back'
+      %p.centered-text= 'Comment'
 
-.container#comment-index{data: {post_id: @post.id}}
-  - @comments.each do |comment|
-    .comment_detail
-      = image_tag comment.post.user.avatar_image
-      .text-area
-        %p.name= comment.post.user.name
-        %p.comment= comment.content
+  .container#comment-index{data: {post_id: @post.id}}
+    - @comments.each do |comment|
+      .comment_detail
+        = image_tag comment.post.user.avatar_image
+        .text-area
+          %p.name= comment.post.user.name
+          %p.comment= comment.content
 
-.container
-  .comment-text-area
-    .comment-form
-      = image_tag 'comment.png', class: 'comment-icon'
-      = text_area_tag :comment_content, '', class: 'sm auto-resize'
+  .container
+    .comment-text-area
+      .comment-form
+        = image_tag 'comment.png', class: 'comment-icon'
+        = text_area_tag :comment_content, '', class: 'sm auto-resize'
 
 = javascript_pack_tag 'comment'
