@@ -24,11 +24,13 @@
         %span.top_count= user.posts_count
         %span.bottom_label Posts
       %p.profile_wrapper
-        %span.top_count= user.followers_count
-        %span.bottom_label Followers 
+        = link_to followers_account_path(user.id) do
+          %span.top_count{style: "display: block;"}= user.followers_count
+          %span.bottom_label{style: "display: block;"} Followers 
       %p.profile_wrapper
-        %span.top_count= user.followings_count
-        %span.bottom_label Following
+        = link_to followings_account_path(user.id) do
+          %span.top_count{style: "display: block;"}= user.followings_count
+          %span.bottom_label{style: "display: block;"} Following
 
 .container.recent_post
   - if recent_posts.any?

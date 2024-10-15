@@ -1,7 +1,14 @@
 .signup_img {
+    display: block; /* 画像をブロック要素として扱う */
     width: 100%;
     height: auto;
     max-width: 100%;
+    margin: 0 auto; /* 画像を中央寄せ */
+    margin-bottom: 30px;
+}
+
+.form-container {
+    margin-top: 20px; /* 画像とフォームの間に余白を作る */
 }
 
 label {
@@ -51,6 +58,14 @@ input[type="number"] {
     text-align: center;
     font-size: 12px;
     font-weight: bold;
-    margin-top: 60px;
     box-sizing: border-box;
+}
+
+/* メニューが画像を隠さないように調整 */
+nav {
+    z-index: 10; /* メニューが他の要素に隠れないように優先度を上げる */
+}
+
+.signup_img {
+    z-index: 1; /* 画像がメニューよりも下に表示されるように調整 */
 }
