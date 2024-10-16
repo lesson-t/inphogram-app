@@ -11,4 +11,9 @@
       = f.label :photos, 'photos'
     %div
       = f.file_field :photos, multiple: true
+    %div
+      = f.label :photos, 'Currently posted photos'
+    %div
+      - @post.photos.each do |photo|
+        = image_tag photo, class: 'edit-photos'
     = f.submit 'post', class: 'btn'

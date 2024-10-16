@@ -4,6 +4,13 @@
       %li= message
   = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
     %div
+      = f.label :avatar, '現在のアバター'
+    %div
+      - if @profile.avatar.attached?
+        = image_tag @profile.avatar, class: 'edit-avatar'
+      - else
+        = image_tag 'default-avatar.png', class: 'edit-avatar'
+    %div
       = f.label :avatar, 'アバター'
     %div
       = f.file_field :avatar

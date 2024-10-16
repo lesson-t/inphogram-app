@@ -248,3 +248,15 @@ $container-padding: 16px;
     }
   }
 }
+
+.edit-avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 100%;
+}
+
+.edit-photos {
+  width: 100px;
+  height: 100px;
+  gap: 5px;
+}
