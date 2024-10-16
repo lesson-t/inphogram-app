@@ -65,15 +65,15 @@ class User < ApplicationRecord
   end
 
   def has_followed?(user)
-    following_relationships.exists?(following_id: user.id)
+    following_relationships.distinct.exists?(following_id: user.id)
   end
 
   def followings_count
-    followings.count
+    followings.distinct.count
   end
 
   def followers_count
-    followers.count
+    followers.distinct.count
   end
 
   def avatar_image
