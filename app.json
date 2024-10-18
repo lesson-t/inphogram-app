@@ -1,0 +1,16 @@
+{
+    "name": "inphogram app",
+    "description": "This is insta-like-app",
+    "keywords": [],
+    "website": "",
+    "repository": "https://github.com/lesson-t/inphogram-app",
+    "env": {},
+    "addons": [
+      "heroku-postgresql:hobby-dev"
+    ],
+    "buildpacks": [{
+      "url": "heroku/nodejs"
+    }, {
+      "url": "heroku/ruby"
+    }]
+  }
