@@ -11,8 +11,7 @@
     "rails-ujs": "^5.2.8-1",
     "sass": "^1.79.3",
     "turbolinks": "^5.2.0",
-    "webpack": "^5",
-    "webpack-cli": "^5"
+    "webpack-cli": "3"
   },
   "version": "0.1.0",
   "scripts": {
